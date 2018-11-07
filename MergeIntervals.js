@@ -16,9 +16,9 @@ Explanation: Intervals [1,4] and [4,5] are considerred overlapping.
 const merge = function(intervals) {
   let merged = []
 
-  let temp
+  merged.push(intervals[0])
 
-  for (var i = 0; i < intervals.length; i++) {
+  for (var i = 1; i < intervals.length; i++) {
     if (intervals[i][0] <= merged[merged.length-1][1]) {
       merged[merged.length-1][1] = intervals[i][1]
       continue
@@ -29,3 +29,9 @@ const merge = function(intervals) {
 
   return merged
 }
+
+let input1 = [[1,3],[2,6],[8,10],[15,18]]
+let input2 = [[1,4],[4,5]]
+
+console.log(merge(input1))
+console.log(merge(input2))
