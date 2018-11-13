@@ -21,17 +21,25 @@ Your algorithm should run in O(n) time and uses constant extra space.
 var firstMissingPositive = function(nums) {
    let lowest = 1;
    //left pass right pass?
-   for (var i = 0; i < nums.length; i++) {
-     if (nums[i] === lowest) {
-       lowest++
-     }
-   }
+  //  for (var i = 0; i < nums.length; i++) {
+  //    if (nums[i] === lowest) {
+  //      lowest++
+  //    }
+  //  }
 
-   for (var i = nums.length-1; i <= 0; i--) {
-     if (nums[i] === lowest) {
-       lowest++
-     }
-   }
+  //  for (var i = nums.length-1; i <= 0; i--) {
+  //    if (nums[i] === lowest) {
+  //      lowest++
+  //    }
+  //  }
+
+  let found = 0;
+  while (found !== -1) {
+    found = nums.indexOf(lowest)
+    if(found >= 0) {
+      lowest++
+    }
+  }
 
    return lowest
 };
@@ -41,3 +49,5 @@ let input2 = [3,4,-1,1]
 let input3 = [7,8,9,11,12]
 let input4 = [2,4,1]
 let input5 = [2,3,4,1]
+
+console.log(firstMissingPositive(input3))
