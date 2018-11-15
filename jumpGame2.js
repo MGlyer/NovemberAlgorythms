@@ -42,3 +42,38 @@ const jump = (nums) => {
 
 let input1 = [2,3,1,1,4]
 console.log(jump(input1))
+
+
+
+
+
+
+/* stolen code
+var jump = function(nums) {
+    var curr = 0;
+    var jumps = 0;
+    var maxReach = 0;
+    var newIndex;
+    var index = 0;
+		
+    if(length <=1) {
+        return 0;
+    }
+    while(index < nums.length) {
+        if(index + nums[index] > maxReach) {
+            newIndex = index;
+            maxReach = index + nums[index];
+        } 
+        if(index >= (curr + nums[curr])) {
+           jumps++;
+           curr = newIndex;
+        } 
+        if(curr + nums[curr]>= nums.length -1) {
+            jumps++;
+            break;
+        }       
+        index++;
+    }    
+    return jumps;
+};
+*/
