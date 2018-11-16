@@ -19,26 +19,23 @@ I feel like the obvious solution is the worst one....but here goes
 
 const permute = (nums) => {
   let answer = []
+  var currentAnswer = []
 
-  const recurse = (arr) => {
-    for (var i = 0; i < nums.length; i++) {
-      if (!arr.includes(nums[i])) {
-        arr.push(nums[i])
-        if (arr.length === nums.length) {
-          answer.push(arr)
-          return
-        } else {
-          recurse(arr)
-          arr = arr.slice(0, arr.length-2)
-        }
-      }
+  const recurseAdd = () => {
+    if (currentAnswer.length === nums.length) {
+      answer.push(currentAnswer)
     }
+
+    nums.forEach(num => {
+      if (!currentAnswer.includes(num)) {
+        currentAnswer.push(num)
+        recurseAdd()
+        currentAnswer = currentAnswer.slice(0, currentAnswer.length-1)
+      }
+    })
   }
 
-  for (var i = 0; i < nums.length; i++) {
-    let array = [nums[i]]
-    recurse(array)
-  }
+  recurseAdd()
 
   return answer
 }
